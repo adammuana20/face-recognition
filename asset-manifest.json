@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/my-app/static/css/main.4e62cf20.css",
-    "main.js": "/my-app/static/js/main.7b14e711.js",
-    "static/js/787.85a35644.chunk.js": "/my-app/static/js/787.85a35644.chunk.js",
-    "index.html": "/my-app/index.html",
-    "main.4e62cf20.css.map": "/my-app/static/css/main.4e62cf20.css.map",
-    "main.7b14e711.js.map": "/my-app/static/js/main.7b14e711.js.map",
-    "787.85a35644.chunk.js.map": "/my-app/static/js/787.85a35644.chunk.js.map"
+    "main.css": "/face-recognition/static/css/main.4e62cf20.css",
+    "main.js": "/face-recognition/static/js/main.e8327d4d.js",
+    "static/js/787.85a35644.chunk.js": "/face-recognition/static/js/787.85a35644.chunk.js",
+    "index.html": "/face-recognition/index.html",
+    "main.4e62cf20.css.map": "/face-recognition/static/css/main.4e62cf20.css.map",
+    "main.e8327d4d.js.map": "/face-recognition/static/js/main.e8327d4d.js.map",
+    "787.85a35644.chunk.js.map": "/face-recognition/static/js/787.85a35644.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4e62cf20.css",
-    "static/js/main.7b14e711.js"
+    "static/js/main.e8327d4d.js"
   ]
 }
