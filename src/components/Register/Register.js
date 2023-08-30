@@ -17,7 +17,7 @@ export default function Register({ onRouteChange, loadUser }) {
     }
 
     function onSubmitSignUp() {
-        fetch('http://localhost:3000/register', {
+        fetch('https://brain-backend-bp3u.onrender.com/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

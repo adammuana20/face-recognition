@@ -201,7 +201,7 @@ export default function App() {
         box: {}
     }))
     
-    fetch('http://localhost:3000/imageurl', {
+    fetch('https://brain-backend-bp3u.onrender.com/imageurl', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -211,7 +211,7 @@ export default function App() {
         .then(response => response.json())
         .then(result => {
             if (result) {
-                fetch('http://localhost:3000/image', {
+                fetch('https://brain-backend-bp3u.onrender.com/image', {
                     method: 'put',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
