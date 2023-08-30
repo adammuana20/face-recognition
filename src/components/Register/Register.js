@@ -48,7 +48,7 @@ export default function Register({ onRouteChange, loadUser }) {
                         className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 leading-tight border-black focus:border-black focus:outline-none focus:shadow-outline" 
                         autoComplete="off" 
                         name="name" 
-                        type="name" 
+                        type="text" 
                         onChange={handleChange}
                         value={formData.name}
                     />
