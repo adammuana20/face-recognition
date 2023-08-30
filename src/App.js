@@ -80,7 +80,7 @@ import Rank from './components/Rank/Rank'
         },
         move: {
             enable: true,
-            speed: 2,
+            speed: 1,
             direction: "none",
             random: false,
             straight: false,
@@ -145,6 +145,24 @@ export default function App() {
     isSignedIn: false,
   })
 
+  const [user, setUser] = React.useState({
+    id: '',
+    name: '',
+    email: '',
+    entries: 0,
+    joined: ''
+  })
+
+  function loadUser(data) {
+    setUser({
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        entries: data.entries,
+        joined: data.joined
+    })
+  }
+
   const {input, imageUrl, box} = faceDetect
   const {route, isSignedIn} = page
 
@@ -176,59 +194,41 @@ export default function App() {
     }))
   }
 
-  const returnClarifaiJSONRequest = (imageUrl) => {
-    // Your PAT (Personal Access Token) can be found in the portal under Authentification
-    const PAT = '3d64170bd229429d9f0cab2e8356f7a9';
-    // Specify the correct user_id/app_id pairings
-    // Since you're making inferences outside your app's scope
-    const USER_ID = 'adammuana20';       
-    const APP_ID = 'my-first-application';
-    // Change these to whatever model and image URL you want to use
-    const MODEL_ID = 'face-detection';  
-    const IMAGE_URL = imageUrl;
-
-    ///////////////////////////////////////////////////////////////////////////////////
-    // YOU DO NOT NEED TO CHANGE ANYTHING BELOW THIS LINE TO RUN THIS EXAMPLE
-    ///////////////////////////////////////////////////////////////////////////////////
-
-    const raw = JSON.stringify({
-        "user_app_id": {
-            "user_id": USER_ID,
-            "app_id": APP_ID
-        },
-        "inputs": [
-            {
-                "data": {
-                    "image": {
-                        "url": IMAGE_URL
-                    }
-                }
-            }
-        ]
-    });
-
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Authorization': 'Key ' + PAT
-        },
-        body: raw
-    };
-
-    return requestOptions
-  }
-
-  const onBtnSubmit = () => {
+  const onPictureSubmit = () => {
     setFaceDetect(prevInput => ({
         ...prevInput,
         imageUrl: prevInput.input,
         box: {}
     }))
-    fetch("https://api.clarifai.com/v2/models/" + 'face-detection'+ "/outputs", returnClarifaiJSONRequest(input))
-    .then(response => response.json())
-    .then(result => displayFaceBox(calculateFaceLocation(result)))
-    .catch(error => console.log('error', error))
+    
+    fetch('http://localhost:3000/imageurl', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            input: input
+        })
+    })
+        .then(response => response.json())
+        .then(result => {
+            if (result) {
+                fetch('http://localhost:3000/image', {
+                    method: 'put',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        id: user.id
+                    })
+                })
+                    .then(res => res.json())
+                    .then(count => {
+                        setUser(prevUser => ({
+                            ...prevUser,
+                            entries: count}))
+                    })
+                    .catch(console.log)
+            }
+            displayFaceBox(calculateFaceLocation(result))
+        })
+        .catch(error => console.log('error', error))
   }
 
   const onRouteChange = (route) => {
@@ -237,13 +237,19 @@ export default function App() {
             ...prevData,
             isSignedIn: false
         }))
+        setUser({
+            id: '',
+            name: '',
+            email: '',
+            entries: 0,
+            joined: ''
+        })
+        setFaceDetect({ input: '', imageUrl: '', box: {} })
     } else if(route === 'home') {
         setPage(prevData => ({
             ...prevData,
             isSignedIn: true
         }))
-
-        setFaceDetect({input: '', imageUrl: '', box: {}})
     }
     setPage(prevData => ({
         ...prevData,
@@ -263,10 +269,10 @@ export default function App() {
       { route === 'home'
       ? <div>
             <Logo />
-            <Rank />
+            <Rank name={user.name} entries={user.entries}/>
             <ImageLinkForm 
                 onInputChange={onInputChange} 
-                onBtnSubmit={onBtnSubmit}
+                onPictureSubmit={onPictureSubmit}
             />
             <FaceRecognition 
                 box={box}
@@ -275,8 +281,8 @@ export default function App() {
         </div>
       : (
             route === 'signin'
-            ? <SignIn onRouteChange={onRouteChange} />
-            : <Register onRouteChange={onRouteChange} />
+            ? <SignIn onRouteChange={onRouteChange} loadUser={loadUser} />
+            : <Register onRouteChange={onRouteChange} loadUser={loadUser} />
         )
       } 
     </div>
