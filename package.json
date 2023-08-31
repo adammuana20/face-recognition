@@ -15,12 +15,13 @@
     "react-parallax-tilt": "^1.7.142",
     "react-scripts": "5.0.1",
     "react-tsparticles": "^2.10.1",
+    "serve": "^14.2.1",
     "tsparticles": "^2.10.1",
     "tsparticles-slim": "^2.10.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
