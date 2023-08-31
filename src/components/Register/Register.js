@@ -39,7 +39,7 @@ export default function Register({ onRouteChange, loadUser }) {
     return (
         <div className="w-full flex justify-center items-center h-[550px]">
             <div className="bg-transparent shadow-[0px_0px_4px_2px_rgba(0,0,0,0.2)] rounded px-8 pt-6 pb-8 mb-4 w-96">
-                <legend className="font-bold text-3xl mb-4">Register</legend>
+                <legend className="font-bold text-3xl mb-4 text-red">Register</legend>
                 <div className="mb-4">
                     <label className="block text-sm font-bold mb-2" htmlFor="name">
                         Name
