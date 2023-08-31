@@ -1,5 +1,5 @@
 {
-  "name": "face-recognition-brain",
+  "name": "face-recognition",
   "homepage": "https://adammuana20.github.io/face-recognition",
   "version": "0.1.0",
   "private": true,
@@ -21,7 +21,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
