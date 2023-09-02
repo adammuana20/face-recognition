@@ -41,13 +41,13 @@ export default function SignIn({ onRouteChange, loadUser }) {
                     <label className="block text-sm font-bold mb-2" htmlFor="email">
                         Email
                     </label>
-                    <input className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 leading-tight border-black focus:border-black focus:outline-none focus:shadow-outline" autoComplete="off" name="email" type="email" onChange={handleChange} value={formSignIn.email} />
+                    <input className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 leading-tight border-black focus:border-black focus:outline-none focus:shadow-outline" autoComplete="off" id="email" name="email" type="email" onChange={handleChange} value={formSignIn.email} />
                 </div>
                 <div className="mb-6">
                     <label className="block text-sm font-bold mb-2" htmlFor="password">
                         Password
                     </label>
-                    <input className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight border-black focus:border-black focus:outline-none focus:shadow-outline" name="password" type="password" autoComplete="off" onChange={handleChange} value={formSignIn.password}/>
+                    <input className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight border-black focus:border-black focus:outline-none focus:shadow-outline" id="password" name="password" type="password" autoComplete="off" onChange={handleChange} value={formSignIn.password}/>
                 </div>
                 <div className="flex items-center justify-between">
                     <button 
