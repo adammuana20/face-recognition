@@ -38,15 +38,15 @@ export default function SignIn({ onRouteChange, loadUser }) {
             <div className="bg-transparent shadow-[0px_0px_4px_2px_rgba(0,0,0,0.2)] rounded px-8 pt-6 pb-8 mb-4 w-96">
                 <legend className="font-bold text-3xl mb-4">Sign In</legend>
                 <div className="mb-4">
-                    <label className="block text-sm font-bold mb-2" htmlFor="email">
+                    <span className="block text-sm font-bold mb-2">
                         Email
-                    </label>
+                    </span>
                     <input className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 leading-tight border-black focus:border-black focus:outline-none focus:shadow-outline" autoComplete="off" name="email" type="email" onChange={handleChange} value={formSignIn.email} />
                 </div>
                 <div className="mb-6">
-                    <label className="block text-sm font-bold mb-2" htmlFor="password">
+                    <span className="block text-sm font-bold mb-2">
                         Password
-                    </label>
+                    </span>
                     <input className="shadow bg-transparent appearance-none border rounded w-full py-2 px-3 mb-3 leading-tight border-black focus:border-black focus:outline-none focus:shadow-outline" name="password" type="password" autoComplete="off" onChange={handleChange} value={formSignIn.password}/>
                 </div>
                 <div className="flex items-center justify-between">
