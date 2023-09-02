@@ -67,7 +67,7 @@ export default function Register({ onRouteChange, loadUser }) {
                     />
                 </div>
                 <div className="mb-4">
-                    <span className="block text-sm font-bold mb-2">
+                    <span  className="block text-sm font-bold mb-2">
                         Password
                     </span>
                     <input 
@@ -79,7 +79,7 @@ export default function Register({ onRouteChange, loadUser }) {
                         value={formData.password}
                     />
                 </div>
-                {/* <div className="mb-6">
+                {/*  <div className="mb-6">
                     <span className="block text-sm font-bold mb-2">
                         Confirm Password
                     </span>
